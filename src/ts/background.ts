@@ -23,7 +23,7 @@ browser.storage.sync.get({
 }).then((items) => {
     browser.webRequest.onBeforeRequest.addListener(
         redirectM3U,
-        {urls: ["https://usher.ttvnw.net/api/channel/hls/*", "https://usher.ttvnw.net/vod/*"]},
+        {urls: ["https://usher.ttvnw.net/api/channel/hls/*", "https://usher.ttvnw.net/vod/*", "https://usher.ttvnw.net/api/v*/channel/hls/*"]},
         ["blocking"]
     );
 
@@ -37,7 +37,7 @@ browser.storage.sync.get({
         if (base.endsWith("/")) {
             base = base.slice(0, -1);
         }
-        const source = /\/(hls|vod)\/(.+)\.m3u8(.+)/.exec(details.url);
+        const source = /\/(hls|vod(?:\/v\d+)?)\/(.+)\.m3u8(.+)/.exec(details.url);
         if (source === null) {
             console.log(`unmatched URL, source ${details.url}`);
             return;
@@ -184,4 +184,3 @@ function arrayToBase64(array: Uint8Array): string {
     }
     return btoa(output.join(""));
 }
-
