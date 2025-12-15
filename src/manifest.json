@@ -12,7 +12,9 @@
   "content_scripts": [
     {
       "matches": [
-        "https://*.twitch.tv/*"
+        "https://www.twitch.tv/*",
+        "https://player.twitch.tv/*",
+        "https://clips.twitch.tv/*"
       ],
       "js": [
         "ts/content.ts"
@@ -50,7 +52,9 @@
     "webRequest",
     "webRequestBlocking",
     "http://localhost/*",
-    "https://*.twitch.tv/*",
+    "https://www.twitch.tv/*",
+    "https://player.twitch.tv/*",
+    "https://clips.twitch.tv/*",
     "https://usher.ttvnw.net/*",
     "https://*.amazon-adsystem.com/*"
   ]
